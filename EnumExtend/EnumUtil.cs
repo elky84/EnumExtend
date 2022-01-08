@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace EnumExtend
@@ -56,6 +58,11 @@ namespace EnumExtend
         public static T ToEnumString<T>(this string value)
         {
             return (T)Enum.Parse(typeof(T), value);
+        }
+
+        public static List<T> ToEnumList<T>()
+        {
+            return ((T[])Enum.GetValues(typeof(T))).ToList();
         }
     }
 }
