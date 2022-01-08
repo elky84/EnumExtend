@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumExtend", "EnumExtend.csproj", "{690E1EFE-698D-4639-96F2-1F94669DB726}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumExtend", "EnumExtend\EnumExtend.csproj", "{690E1EFE-698D-4639-96F2-1F94669DB726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
