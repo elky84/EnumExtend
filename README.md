@@ -46,3 +46,9 @@ enum.Desc()
 ## nuget
 
 <https://www.nuget.org/packages/EnumExtend/>
+
+## Version History
+
+### v1.0.4
+
+added TypesUtil (similar EnumUtil)
