@@ -5,27 +5,8 @@ using System.Linq;
 
 namespace EnumExtend
 {
-    public class JsonEnumsConverter<T> : JsonConverter where T : IComparable, IConvertible, IFormattable
+    public class JsonEnumsConverter<T> : JsonConverter where T : struct, IComparable, IConvertible, IFormattable
     {
-        public static List<T> FromDescription(List<string> descriptions)
-        {
-            return descriptions.ConvertAll(x => FromDescription(x)).ToList();
-        }
-
-        public static T FromDescription(string description)
-        {
-            foreach (T e in (T[])Enum.GetValues(typeof(T)))
-            {
-                Enum eValue = (Enum)Enum.ToObject(typeof(T), e);
-                if (eValue.GetDescription() == description)
-                {
-                    return e;
-                }
-            }
-
-            return default;
-        }
-
         public override bool CanConvert(Type objectType)
         {
             return true;
@@ -42,7 +23,7 @@ namespace EnumExtend
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            return FromDescription(serializer.Deserialize<List<string>>(reader));
+            return EnumUtil.FromDescriptions<T>(serializer.Deserialize<List<string>>(reader));
         }
     }
 }

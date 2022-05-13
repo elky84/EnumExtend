@@ -1,27 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
 
-	<PackageId>EnumExtend</PackageId>
-	<Version>1.0.4</Version>
-	<Authors>elky</Authors>
-	<Company>elky</Company>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageId>EnumExtend</PackageId>
+		<Version>1.0.5</Version>
+		<Authors>elky</Authors>
+		<Company>elky</Company>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 
-	<PackageDescription>Easily usable with Enum</PackageDescription>
-	<RepositoryUrl>https://github.com/elky84/EnumExtend</RepositoryUrl>
+		<PackageDescription>Easily usable with Enum</PackageDescription>
+		<RepositoryUrl>https://github.com/elky84/EnumExtend</RepositoryUrl>
 
-	<PackageLicenseFile>LICENSE</PackageLicenseFile>
-  </PropertyGroup>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-	<None Include="..\LICENSE" Pack="true" PackagePath="\"/>
-	<None Include="..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE" Pack="true" PackagePath="\"/>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
 
 </Project>

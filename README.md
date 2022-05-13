@@ -52,6 +52,10 @@ enum.Desc()
 
 ## Version History
 
+### v1.0.5
+
+move FromDescription to EnumUtil. (from JsonEnumConverter and JsonEnumsConverter)
+
 ### v1.0.4
 
 added TypesUtil (similar EnumUtil)

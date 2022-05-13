@@ -5,20 +5,6 @@ namespace EnumExtend
 {
     public class JsonEnumConverter<T> : JsonConverter where T : struct, IComparable, IConvertible, IFormattable
     {
-        public static Nullable<T> FromDescription(string description)
-        {
-            foreach (T e in (T[])Enum.GetValues(typeof(T)))
-            {
-                Enum eValue = (Enum)Enum.ToObject(typeof(T), e);
-                if (eValue.GetDescription() == description)
-                {
-                    return e;
-                }
-            }
-
-            return null;
-        }
-
         public override bool CanConvert(Type objectType)
         {
             return true;
@@ -47,7 +33,7 @@ namespace EnumExtend
             {
                 var enumString = (string)reader.Value;
 
-                return FromDescription(enumString);
+                return EnumUtil.FromDescription<T>(enumString);
             }
 
             return null;

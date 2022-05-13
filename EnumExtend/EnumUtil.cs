@@ -12,7 +12,7 @@ namespace EnumExtend
             return GetEnumDescription(value);
         }
 
-        public static string Desc(this Enum value) 
+        public static string Desc(this Enum value)
         {
             return GetEnumDescription(value);
         }
@@ -46,7 +46,7 @@ namespace EnumExtend
 
                     return value.ToString();
                 }
-                else 
+                else
                     return value.ToString();
             }
             else if (descriptionAttributes.Length > 1)
@@ -63,6 +63,25 @@ namespace EnumExtend
         public static List<T> ToEnumList<T>()
         {
             return ((T[])Enum.GetValues(typeof(T))).ToList();
+        }
+
+        public static List<T?> FromDescriptions<T>(List<string> descriptions) where T : struct
+        {
+            return descriptions.ConvertAll(x => FromDescription<T>(x)).ToList();
+        }
+
+        public static Nullable<T> FromDescription<T>(string description) where T : struct
+        {
+            foreach (T e in (T[])Enum.GetValues(typeof(T)))
+            {
+                Enum eValue = (Enum)Enum.ToObject(typeof(T), e);
+                if (eValue.GetDescription() == description)
+                {
+                    return e;
+                }
+            }
+
+            return default;
         }
     }
 }
