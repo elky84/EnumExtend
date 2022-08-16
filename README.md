@@ -52,6 +52,12 @@ enum.Desc()
 
 ## Version History
 
+### v1.0.6
+
+change method name ToEnumString to FromString
+change method name ToEnumList to GetEnumList
+
+
 ### v1.0.5
 
 move FromDescription to EnumUtil. (from JsonEnumConverter and JsonEnumsConverter)
