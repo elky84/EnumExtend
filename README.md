@@ -52,6 +52,10 @@ enum.Desc()
 
 ## Version History
 
+### v1.0.7
+
+migrate .net standard 2.0 to .net standrad 2.1
+
 ### v1.0.6
 
 change method name ToEnumString to FromString
