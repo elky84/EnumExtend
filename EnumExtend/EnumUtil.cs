@@ -65,12 +65,12 @@ namespace EnumExtend
             return ((T[])Enum.GetValues(typeof(T))).ToList();
         }
 
-        public static List<T?> FromDescriptions<T>(List<string> descriptions) where T : struct
+        public static List<T> FromDescriptions<T>(List<string> descriptions) where T : struct
         {
             return descriptions.ConvertAll(x => FromDescription<T>(x)).ToList();
         }
 
-        public static Nullable<T> FromDescription<T>(string description) where T : struct
+        public static T FromDescription<T>(string description) where T : struct
         {
             foreach (T e in (T[])Enum.GetValues(typeof(T)))
             {

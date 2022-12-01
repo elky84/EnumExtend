@@ -52,6 +52,10 @@ enum.Desc()
 
 ## Version History
 
+### v1.0.8
+
+Not Nullable JsonEnumConverter and JsonEnumsConverter.
+
 ### v1.0.7
 
 migrate .net standard 2.0 to .net standrad 2.1
