@@ -22,24 +22,25 @@ namespace EnumExtend
             return GetEnumDescription(value);
         }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public static string GetEnumDescription(object value)
         {
             if (value == null)
                 return null;
 
-            Type type = value.GetType();
+            var type = value.GetType();
             if (!type.IsEnum)
                 throw new ApplicationException("Value parameter must be an enum.");
 
-            FieldInfo fieldInfo = type.GetField(value.ToString());
-            object[] descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            var fieldInfo = type.GetField(value.ToString());
+            var descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            if (descriptionAttributes == null || descriptionAttributes.Length == 0)
+            if (descriptionAttributes.Length == 0)
             {
-                object[] enforcementAttributes = fieldInfo.GetCustomAttributes(typeof(DescriptiveEnumEnforcementAttribute), false);
-                if (enforcementAttributes != null && enforcementAttributes.Length == 1)
+                var enforcementAttributes = fieldInfo.GetCustomAttributes(typeof(DescriptiveEnumEnforcementAttribute), false);
+                if (enforcementAttributes.Length == 1)
                 {
-                    DescriptiveEnumEnforcementAttribute enforcementAttribute = (DescriptiveEnumEnforcementAttribute)enforcementAttributes[0];
+                    var enforcementAttribute = (DescriptiveEnumEnforcementAttribute)enforcementAttributes[0];
 
                     if (enforcementAttribute.EnforcementType == DescriptiveEnumEnforcementAttribute.EnforcementTypeEnum.ThrowException)
                         throw new ApplicationException("No Description attributes exist in enforced enum of type '" + type.Name + "', value '" + value.ToString() + "'.");
@@ -67,14 +68,14 @@ namespace EnumExtend
 
         public static List<T> FromDescriptions<T>(List<string> descriptions) where T : struct
         {
-            return descriptions.ConvertAll(x => FromDescription<T>(x)).ToList();
+            return descriptions.ConvertAll(FromDescription<T>).ToList();
         }
 
         public static T FromDescription<T>(string description) where T : struct
         {
-            foreach (T e in (T[])Enum.GetValues(typeof(T)))
+            foreach (var e in (T[])Enum.GetValues(typeof(T)))
             {
-                Enum eValue = (Enum)Enum.ToObject(typeof(T), e);
+                var eValue = (Enum)Enum.ToObject(typeof(T), e);
                 if (eValue.GetDescription() == description)
                 {
                     return e;

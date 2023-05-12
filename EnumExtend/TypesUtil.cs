@@ -12,17 +12,17 @@ namespace EnumExtend
 
         public static T Next<T>(this T src) where T : struct
         {
-            if (!typeof(T).IsEnum) throw new ArgumentException(String.Format("Argument {0} is not an Enum", typeof(T).FullName));
+            if (!typeof(T).IsEnum) throw new ArgumentException($"Argument {typeof(T).FullName} is not an Enum");
 
-            T[] Arr = (T[])Enum.GetValues(src.GetType());
-            int j = Array.IndexOf<T>(Arr, src) + 1;
-            return (Arr.Length == j) ? Arr[0] : Arr[j];
+            var arr = (T[])Enum.GetValues(src.GetType());
+            var j = Array.IndexOf<T>(arr, src) + 1;
+            return (arr.Length == j) ? arr[0] : arr[j];
         }
 
-        public static Nullable<T> FromName<T>(string name) where T : struct
+        public static T? FromName<T>(string name) where T : struct
         {
             name = name.ToUpper();
-            foreach (T e in (T[])Enum.GetValues(typeof(T)))
+            foreach (var e in (T[])Enum.GetValues(typeof(T)))
             {
                 if (e.ToString().ToUpper() == name)
                 {

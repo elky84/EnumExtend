@@ -14,10 +14,13 @@ namespace EnumExtend
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value != null)
+            switch (value)
             {
-                var val = value as Enum[];
-                writer.WriteValue(val.ToList().ConvertAll(x => x.GetDescription()).ToArray());
+                case null:
+                    return;
+                case Enum[] val:
+                    writer.WriteValue(val.ToList().ConvertAll(x => x.GetDescription()).ToArray());
+                    break;
             }
         }
 

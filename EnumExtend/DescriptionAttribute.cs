@@ -5,7 +5,7 @@ namespace EnumExtend
     [AttributeUsage(AttributeTargets.Field)]
     public class DescriptionAttribute : System.Attribute
     {
-        public string Description { get; set; }
+        private string Description { get; set; }
 
         public DescriptionAttribute() { }
 
